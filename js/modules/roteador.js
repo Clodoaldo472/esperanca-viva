@@ -3,6 +3,7 @@
   const App = (window.App = window.App || {});
   const rotas = {};
   const titulo = "Instituto Esperança Viva";
+  let primeiraCarga = true;
 
   function registrar(caminho, definicao) { rotas[caminho] = definicao; }
 
@@ -21,7 +22,8 @@
     if (rota.aoRenderizar) rota.aoRenderizar(app);
     const alvo = ancora ? document.getElementById(ancora) : null;
     if (alvo) alvo.scrollIntoView();
-    else { window.scrollTo(0, 0); app.focus({ preventScroll: true }); }
+    else { window.scrollTo(0, 0); if (!primeiraCarga) app.focus({ preventScroll: true }); }
+    primeiraCarga = false;
   }
 
   function iniciar() {
