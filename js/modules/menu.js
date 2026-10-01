@@ -14,6 +14,7 @@ if (botao) {
       botao.focus();
     }
   });
+  window.addEventListener("hashchange", () => alternar(false));
   window.matchMedia("(min-width:768px)").addEventListener("change", (e) => {
     if (e.matches) alternar(false);
   });
