@@ -6,6 +6,7 @@
     if (!area) return;
     const el = document.createElement("div");
     el.className = "toast toast--" + tipo;
+    if (tipo === "erro") el.setAttribute("role", "alert");
     const texto = document.createElement("p");
     texto.textContent = mensagem;
     const fechar = document.createElement("button");
