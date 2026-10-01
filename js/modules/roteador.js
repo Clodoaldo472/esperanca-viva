@@ -11,7 +11,7 @@
     const caminho = partes[0];
     const ancora = partes[1] || "";
     const app = document.getElementById("app");
-    const rota = rotas[caminho] || rotas.naoEncontrada;
+    const rota = Object.hasOwn(rotas, caminho) ? rotas[caminho] : rotas.naoEncontrada;
     app.innerHTML = rota.render();
     document.title = (rota.titulo || "Página não encontrada") + " | " + titulo;
     document.querySelectorAll("[data-rota]").forEach((link) => {
