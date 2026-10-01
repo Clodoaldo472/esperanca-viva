@@ -6,7 +6,7 @@ import { transformSync } from "esbuild";
 
 const ordemJs = ["dados", "templates", "mascaras", "armazenamento", "notificacoes", "validacao", "menu", "roteador"]
   .map((n) => `js/modules/${n}.js`).concat("js/main.js");
-const imagens = ["logo-esperanca-viva.png", "projeto-educacao.jpg", "projeto-alimentar.jpg", "projeto-digital.jpg", "oficina-inclusao-digital.jpg"];
+const imagens = ["logo-esperanca-viva.png", "projeto-educacao.jpg", "projeto-alimentar.jpg", "projeto-digital.jpg", "oficina-inclusao-digital.jpg", "logo-esperanca-viva.webp", "projeto-educacao.webp", "projeto-alimentar.webp", "projeto-digital.webp", "oficina-inclusao-digital.webp", "oficina-inclusao-digital-400.jpg", "oficina-inclusao-digital-400.webp"];
 const ler = (c) => readFileSync(c, "utf8");
 
 rmSync("docs", { recursive: true, force: true });
