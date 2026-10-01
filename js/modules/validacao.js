@@ -21,12 +21,14 @@
       return Array.from(grupo).some((r) => r.checked) ? "" : "Selecione uma opção.";
     }
     if (campo.type === "checkbox") return campo.checked ? "" : "É necessário autorizar o tratamento de dados.";
-    if (v.valueMissing) return "Preencha este campo.";
+    if (v.valueMissing || (campo.type === "text" && campo.required && campo.value.trim() === "")) return "Preencha este campo.";
     if (v.typeMismatch) return "Informe um e-mail válido, como nome@dominio.com.br.";
     if (v.patternMismatch || v.tooShort) return campo.title || "Formato inválido.";
     if (campo.id === "cpf" && !cpfValido(campo.value)) return "CPF inválido: confira os dígitos verificadores.";
     if (campo.id === "nascimento") {
-      if (campo.value > new Date().toISOString().slice(0, 10)) return "A data de nascimento não pode ser futura.";
+      const h = new Date();
+      const hoje = h.getFullYear() + "-" + String(h.getMonth() + 1).padStart(2, "0") + "-" + String(h.getDate()).padStart(2, "0");
+      if (campo.value > hoje) return "A data de nascimento não pode ser futura.";
       if (v.rangeUnderflow) return "Informe uma data a partir de 1900.";
     }
     return "";

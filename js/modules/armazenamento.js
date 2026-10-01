@@ -5,7 +5,7 @@
   function listar() {
     try {
       const lista = JSON.parse(localStorage.getItem(CHAVE) || "[]");
-      return Array.isArray(lista) ? lista : [];
+      return Array.isArray(lista) ? lista.filter((i) => i && typeof i === "object" && i.id != null && typeof i.nome === "string") : [];
     } catch (erro) {
       return [];
     }
@@ -20,7 +20,9 @@
   }
   function salvar(registro) {
     const lista = listar();
-    lista.push({ id: Date.now(), ...registro });
+    let id = Date.now();
+    while (lista.some((i) => String(i.id) === String(id))) id++;
+    lista.push({ id, ...registro });
     return gravar(lista);
   }
   function remover(id) {
