@@ -5,6 +5,12 @@
 
   const mascararCpf = (cpf) => "***.***." + cpf.replace(/\D/g, "").slice(6, 9) + "-" + cpf.replace(/\D/g, "").slice(9, 11);
 
+  function formatarData() {
+    // Day.js (CDN) formata data e hora; sem a biblioteca, usa a API nativa.
+    if (typeof window.dayjs === "function") return window.dayjs().format("DD/MM/YYYY HH:mm");
+    return new Date().toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
+  }
+
   function atualizarLista() {
     const destino = document.getElementById("lista-cadastros");
     if (destino) destino.innerHTML = templates.listaCadastros(armazenamento.listar());
@@ -19,7 +25,7 @@
         nome: dados.get("nome").trim(),
         tipo: dados.get("tipo"),
         cpfMascarado: mascararCpf(dados.get("cpf")),
-        criadoEm: new Date().toLocaleDateString("pt-BR")
+        criadoEm: formatarData()
       });
       if (salvo) {
         notificacoes.toast("Cadastro salvo neste navegador. Obrigado por participar!");
