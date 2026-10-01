@@ -40,6 +40,9 @@ GitHub Pages, a partir da branch `main`, pasta `/docs`. Para atualizar: gerar o 
 ## Acessibilidade (WCAG 2.1 AA)
 Verificada com axe-core (0 violações em 4 rotas, em 1280 px e 360 px) e testes manuais de teclado: link para pular ao conteúdo, foco visível com contraste mínimo de 3:1, mensagens de erro associadas aos campos (aria-describedby, aria-invalid) e toasts anunciados. Não foi testada com leitor de tela real (NVDA, VoiceOver).
 
+### Modo escuro e alto contraste
+Os temas seguem a preferência do sistema, sem JavaScript: `prefers-color-scheme: dark` ativa o modo escuro e `prefers-contrast: more` ativa o alto contraste (preto sobre branco, ou branco sobre preto combinados com o modo escuro). As cores são variáveis CSS no `:root` de `css/estilo.css`, sobrescritas em três blocos `@media`. Todo texto tem razão de contraste mínima de 4,5:1 nos quatro modos (axe-core: 0 violações em 3 rotas e no estado de erro, em 1280 px e 360 px). Não há botão para alternar o tema manualmente.
+
 ## Fluxo de versionamento (GitFlow)
 - `main`: somente versões de lançamento, com tag (`vX.Y.Z`).
 - `develop`: integração das funcionalidades.
