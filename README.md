@@ -24,6 +24,8 @@ npm run build
 ```
 O script `scripts/build.mjs` (esbuild) junta e minifica os 2 CSS em 1 e os 9 JS em 1, ajusta os caminhos e copia somente as imagens usadas para `docs/`. Os arquivos de `html/`, `css/` e `js/` continuam sendo o código-fonte. Nunca edite `docs/` à mão: refaça o build.
 
+Imagens (1.3.0): WebP com fallback JPEG/PNG por `<picture>`; a imagem da oficina tem `srcset` 400w/800w com `sizes`; `width`/`height` evitam deslocamento de layout e `loading="lazy"` adia as imagens abaixo da dobra. Bytes de imagem (home + projetos): 25.425 (JPEG/PNG) para 11.956 em tela larga (-53,0%) e 10.068 em tela estreita (-60,4%). Bytes totais da página (8 requisições, sem a CDN): 58.838 para 45.853 em 1280 px (-22,1%) e 43.965 em 360 px (-25,3%). Sem Lighthouse nem medição em rede real: o tempo de carregamento é estimado a partir dos bytes.
+
 Medição da versão 1.1.0 (rotas início e projetos, sem a CDN): requisições de 17 para 8; 92.580 para 54.170 bytes (-41,5%); imagens de 57.638 para 25.425 bytes (-55,9%).
 
 ## Deploy
@@ -34,7 +36,7 @@ GitHub Pages, a partir da branch `main`, pasta `/docs`. Para atualizar: gerar o 
 - `css/`: `reset.css` e `estilo.css` (design system, Grid, Flexbox, componentes BEM).
 - `js/main.js`: raiz de composição; registra rotas e liga os módulos.
 - `js/modules/`: `dados`, `templates`, `roteador`, `mascaras`, `validacao`, `armazenamento`, `notificacoes`, `menu`.
-- `img/`: logotipo e imagens (já otimizadas).
+- `img/`: logotipo e imagens (WebP com fallback JPEG/PNG, via `<picture>`).
 - `scripts/build.mjs` e `docs/`: build e saída de produção.
 
 ## Acessibilidade (WCAG 2.1 AA)
