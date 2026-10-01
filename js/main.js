@@ -41,6 +41,9 @@
     });
   }
 
+  const pular = document.querySelector(".skip-link");
+  if (pular) pular.addEventListener("click", (e) => { e.preventDefault(); document.getElementById("app").focus(); });
+
   roteador.registrar("inicio", { titulo: "Início", render: templates.inicio });
   roteador.registrar("projetos", { titulo: "Projetos Sociais", render: templates.projetos });
   roteador.registrar("cadastro", { titulo: "Seja Voluntário ou Doador", render: templates.cadastro, aoRenderizar: iniciarCadastro });

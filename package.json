@@ -1,0 +1,12 @@
+{
+  "name": "esperanca-viva",
+  "version": "1.1.0",
+  "private": true,
+  "description": "SPA do Instituto Esperança Viva (HTML, CSS e JavaScript puros)",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
