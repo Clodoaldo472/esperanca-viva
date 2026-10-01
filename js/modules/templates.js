@@ -7,7 +7,7 @@
 
   /* Componentes reutilizáveis */
   const badge = (tipo, rotulo) => `<span class="badge badge--${tipo}">${escapar(rotulo)}</span>`;
-  const cartao = (p) => `<article class="cartao"><h3>${escapar(p.titulo)}</h3><p>${badge(p.status, p.rotulo)}</p><img src="../img/${p.imagem}" alt="${escapar(p.alt)}" width="400" height="225" loading="lazy"><p>${escapar(p.texto)}</p></article>`;
+  const cartao = (p) => `<article class="cartao"><h3>${escapar(p.titulo)}</h3><p>${badge(p.status, p.rotulo)}</p><picture><source type="image/webp" srcset="../img/${p.imagem.replace(".jpg", ".webp")}"><img src="../img/${p.imagem}" alt="${escapar(p.alt)}" width="400" height="225" loading="lazy"></picture><p>${escapar(p.texto)}</p></article>`;
   const alerta = (tipo, icone, titulo, texto) => `<div class="alerta alerta--${tipo}" role="status"><span class="alerta__icone" aria-hidden="true">${icone}</span><div><p class="alerta__titulo">${escapar(titulo)}</p><p>${escapar(texto)}</p></div></div>`;
   const campo = (c) => {
     const controle = c.tipo === "select"
@@ -17,7 +17,7 @@
   };
 
   /* Páginas (templates) */
-  const inicio = () => `<section aria-labelledby="sobre"><h1 id="sobre">Quem somos</h1><p>O Instituto Esperança Viva é uma organização da sociedade civil, sem fins lucrativos, dedicada à educação, à segurança alimentar e à inclusão digital de famílias em situação de vulnerabilidade social.</p><figure><img src="../img/oficina-inclusao-digital.jpg" alt="Voluntária ensina três crianças a usar um notebook em uma oficina de inclusão digital" width="800" height="450" loading="lazy"><figcaption>Oficina de inclusão digital realizada em 2025.</figcaption></figure><p><a class="botao" href="#/cadastro">Quero ajudar</a></p></section>
+  const inicio = () => `<section aria-labelledby="sobre"><h1 id="sobre">Quem somos</h1><p>O Instituto Esperança Viva é uma organização da sociedade civil, sem fins lucrativos, dedicada à educação, à segurança alimentar e à inclusão digital de famílias em situação de vulnerabilidade social.</p><figure><picture><source type="image/webp" srcset="../img/oficina-inclusao-digital-400.webp 400w, ../img/oficina-inclusao-digital.webp 800w" sizes="(min-width: 50rem) 800px, 100vw"><img src="../img/oficina-inclusao-digital.jpg" srcset="../img/oficina-inclusao-digital-400.jpg 400w, ../img/oficina-inclusao-digital.jpg 800w" sizes="(min-width: 50rem) 800px, 100vw" alt="Voluntária ensina três crianças a usar um notebook em uma oficina de inclusão digital" width="800" height="450" loading="lazy"></picture><figcaption>Oficina de inclusão digital realizada em 2025.</figcaption></figure><p><a class="botao" href="#/cadastro">Quero ajudar</a></p></section>
 <section aria-labelledby="missao"><h2 id="missao">Missão e impacto</h2><h3>Missão</h3><p>Promover autonomia e cidadania por meio de ações educativas e assistenciais com gestão transparente.</p><h3>Impacto</h3><ul><li>1.200 famílias atendidas por ano;</li><li>85 voluntários ativos;</li><li>12 oficinas mensais gratuitas.</li></ul></section>
 <section aria-labelledby="atuacao"><h2 id="atuacao">Áreas de atuação</h2>${projetos.map(cartao).join("")}</section>`;
 
